@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react';
 import { BankListItem } from '@/lib/types';
 import BankCard from './BankCard';
-import { Banknote, Search, X } from 'lucide-react';
+import { Banknote, Search, X, Download } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import {
@@ -13,6 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { useToast } from '@/hooks/use-toast';
 
 interface BankListProps {
   banks: BankListItem[];
@@ -26,6 +27,7 @@ type SortOption = 'name-asc' | 'name-desc' | 'account-asc' | 'account-desc';
 export default function BankList({ banks, onEdit, onDelete, onView }: BankListProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<SortOption>('name-asc');
+  const { toast } = useToast();
 
   const filteredAndSortedBanks = useMemo(() => {
     let filtered = banks;
@@ -58,6 +60,56 @@ export default function BankList({ banks, onEdit, onDelete, onView }: BankListPr
 
     return sorted;
   }, [banks, searchQuery, sortBy]);
+
+  const exportToCSV = () => {
+    if (filteredAndSortedBanks.length === 0) {
+      toast({
+        title: 'No data to export',
+        description: 'There are no banks to export.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    // Create CSV content
+    const headers = ['Bank Name', 'Account Number'];
+    const rows = filteredAndSortedBanks.map((bank) => [
+      bank.bankName,
+      bank.accountNumber,
+    ]);
+
+    // Escape values that contain commas or quotes
+    const escapeCSV = (value: string) => {
+      if (value.includes(',') || value.includes('"') || value.includes('\n')) {
+        return `"${value.replace(/"/g, '""')}"`;
+      }
+      return value;
+    };
+
+    // Combine headers and rows
+    const csvContent = [
+      headers.map(escapeCSV).join(','),
+      ...rows.map((row) => row.map(escapeCSV).join(',')),
+    ].join('\n');
+
+    // Create blob and download
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    
+    link.setAttribute('href', url);
+    link.setAttribute('download', `lockbox-banks-${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
+    toast({
+      title: 'Export successful',
+      description: `Exported ${filteredAndSortedBanks.length} bank${filteredAndSortedBanks.length === 1 ? '' : 's'} to CSV.`,
+    });
+  };
 
   if (banks.length === 0) {
     return (
@@ -106,6 +158,14 @@ export default function BankList({ banks, onEdit, onDelete, onView }: BankListPr
             <SelectItem value="account-desc">Account (Desc)</SelectItem>
           </SelectContent>
         </Select>
+        <Button
+          variant="outline"
+          onClick={exportToCSV}
+          className="w-full sm:w-auto"
+        >
+          <Download className="mr-2 h-4 w-4" />
+          Export CSV
+        </Button>
       </div>
 
       {/* Results Count */}

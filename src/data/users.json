@@ -608,5 +608,24 @@
         "customFields": []
       }
     ]
+  },
+  {
+    "id": "e92161be-efd0-4c12-9817-f0cbf14f04b9",
+    "username": "lalala",
+    "masterPassword": "password",
+    "banks": [
+      {
+        "id": "eb2217fc-64a3-41d8-bd25-8f596381964c",
+        "bankName": "Demo",
+        "phoneForOtp": "7894561235",
+        "accountNumber": "789945661233",
+        "netBankingUsername": "Demo",
+        "netBankingPassword": "e4db7cd10586faf36c265acf046995e2:9b07a11f557cf85750e44d951e15746d",
+        "mobileBankingUsername": "Demo",
+        "mobileBankingPassword": "29caccdcb45bae6f3f0ccfa6e7b14d48:83442d64cf1af4222fb7fbb75b1694c5",
+        "atmPin": "bcf9645d8fd3e01bb752377371c0446f:b3b6e6be34791d66398bd6bd47a3316e",
+        "customFields": []
+      }
+    ]
   }
 ]

@@ -108,7 +108,8 @@ export default function HomePage() {
         </div>
       )}
       <Header 
-        user={currentUser} 
+        user={currentUser}
+        bankCount={banks.length}
         onAddBank={handleAdd} 
         onChangePassword={() => setDialog('changePassword')}
         onLogout={handleLogout}

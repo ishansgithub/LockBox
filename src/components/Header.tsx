@@ -17,12 +17,13 @@ import { Avatar, AvatarFallback } from './ui/avatar';
 
 interface HeaderProps {
   user: User;
+  bankCount?: number;
   onAddBank: () => void;
   onChangePassword: () => void;
   onLogout: () => void;
 }
 
-export default function Header({ user, onAddBank, onChangePassword, onLogout }: HeaderProps) {
+export default function Header({ user, bankCount, onAddBank, onChangePassword, onLogout }: HeaderProps) {
   const getInitials = (name: string) => {
     return name
       .split(' ')
@@ -39,6 +40,11 @@ export default function Header({ user, onAddBank, onChangePassword, onLogout }: 
           <div className="flex items-center gap-2">
             <Lock className="h-6 w-6 text-primary" />
             <h1 className="text-xl font-bold text-primary">Lockbox</h1>
+            {bankCount !== undefined && (
+              <span className="ml-2 px-2 py-0.5 text-xs font-medium bg-primary/10 text-primary rounded-full">
+                {bankCount} {bankCount === 1 ? 'bank' : 'banks'}
+              </span>
+            )}
           </div>
           <div className="flex items-center gap-3">
             <Button onClick={onAddBank} size="sm" className="rounded-full">

@@ -1,0 +1,612 @@
+[
+  {
+    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "username": "jennifer_martinez",
+    "masterPassword": "SecurePass2024!",
+    "banks": [
+      {
+        "id": "f7e8d9c0-b1a2-3456-7890-abcdef123456",
+        "bankName": "Chase Manhattan Bank",
+        "phoneForOtp": "+12025551234",
+        "accountNumber": "456789123456",
+        "netBankingUsername": "jennifer.martinez@email.com",
+        "netBankingPassword": "a3f4b5c6d7e8f9a0b1c2d3e4f5a6b7c8:d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3",
+        "mobileBankingUsername": "jmartinez_user",
+        "mobileBankingPassword": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6:d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1",
+        "atmPin": "9f8e7d6c5b4a39281716151413121110:0f1e2d3c4b5a6978877665544332211",
+        "customFields": [
+          {
+            "label": "SWIFT Code",
+            "value": "CHASUS33:12345678901234567890123456789012"
+          },
+          {
+            "label": "Account Type",
+            "value": "Premium:Checking:a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"
+          }
+        ]
+      },
+      {
+        "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+        "bankName": "Wells Fargo",
+        "phoneForOtp": "+12025556789",
+        "accountNumber": "789012345678",
+        "netBankingUsername": "jennifer.m.banking",
+        "netBankingPassword": "c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8:f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3",
+        "mobileBankingUsername": "jennifer_m_wells",
+        "mobileBankingPassword": "2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7:e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2",
+        "atmPin": "8e7d6c5b4a392817161514131211100f:1e2d3c4b5a69788776655443322110f",
+        "customFields": []
+      }
+    ]
+  },
+  {
+    "id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+    "username": "robert_chang",
+    "masterPassword": "MySecure123!@#",
+    "banks": [
+      {
+        "id": "d4e5f6a7-b8c9-0123-defa-234567890123",
+        "bankName": "Bank of America",
+        "phoneForOtp": "+14085551234",
+        "accountNumber": "123456789012",
+        "netBankingUsername": "robert.chang@email.com",
+        "netBankingPassword": "d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9:a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4",
+        "mobileBankingUsername": "rchang_user",
+        "mobileBankingPassword": "3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8:f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3",
+        "atmPin": "7d6c5b4a392817161514131211100f1e:2d3c4b5a69788776655443322110f1e",
+        "customFields": [
+          {
+            "label": "Routing Number",
+            "value": "026009593:abcdef1234567890abcdef1234567890"
+          }
+        ]
+      },
+      {
+        "id": "e5f6a7b8-c9d0-1234-efab-345678901234",
+        "bankName": "Citibank",
+        "phoneForOtp": "+12125551234",
+        "accountNumber": "234567890123",
+        "netBankingUsername": "robert.c.banking",
+        "netBankingPassword": "e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0:b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5",
+        "mobileBankingUsername": "robert_c_citi",
+        "mobileBankingPassword": "4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9:a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4",
+        "atmPin": "6c5b4a392817161514131211100f1e2d:3c4b5a69788776655443322110f1e2d",
+        "customFields": [
+          {
+            "label": "Credit Card Number",
+            "value": "4532:1234:5678:9012:9876543210abcdef1234567890"
+          },
+          {
+            "label": "CVV",
+            "value": "123:a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7"
+          }
+        ]
+      },
+      {
+        "id": "f6a7b8c9-d0e1-2345-fabc-456789012345",
+        "bankName": "Goldman Sachs",
+        "phoneForOtp": "+12125555678",
+        "accountNumber": "345678901234",
+        "netBankingUsername": "robert.chang@gs.com",
+        "netBankingPassword": "f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1:c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6",
+        "mobileBankingUsername": "rchang_gs",
+        "mobileBankingPassword": "5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0:b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5",
+        "atmPin": "5b4a392817161514131211100f1e2d3c:4b5a69788776655443322110f1e2d3c",
+        "customFields": []
+      }
+    ]
+  },
+  {
+    "id": "a7b8c9d0-e1f2-3456-abcd-567890123456",
+    "username": "sarah_williams",
+    "masterPassword": "P@ssw0rdSecure!",
+    "banks": [
+      {
+        "id": "b8c9d0e1-f2a3-4567-bcde-678901234567",
+        "bankName": "JP Morgan Chase",
+        "phoneForOtp": "+13105551234",
+        "accountNumber": "567890123456",
+        "netBankingUsername": "sarah.williams@email.com",
+        "netBankingPassword": "a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2:d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7",
+        "mobileBankingUsername": "swilliams_user",
+        "mobileBankingPassword": "6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1:c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6",
+        "atmPin": "4a392817161514131211100f1e2d3c4b:5a69788776655443322110f1e2d3c4b",
+        "customFields": [
+          {
+            "label": "Investment Account",
+            "value": "IRA-12345:7890abcdef1234567890abcdef123456"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c9d0e1f2-a3b4-5678-cdef-789012345678",
+    "username": "michael_johnson",
+    "masterPassword": "Secure2024#Pass",
+    "banks": [
+      {
+        "id": "d0e1f2a3-b4c5-6789-defa-890123456789",
+        "bankName": "US Bank",
+        "phoneForOtp": "+16125551234",
+        "accountNumber": "678901234567",
+        "netBankingUsername": "michael.j@email.com",
+        "netBankingPassword": "b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3:e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8",
+        "mobileBankingUsername": "mjohnson_user",
+        "mobileBankingPassword": "7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2:d3e4f5a6b7c8d9e0f1a2b3c4d5e6",
+        "atmPin": "392817161514131211100f1e2d3c4b5a:69788776655443322110f1e2d3c4b5a",
+        "customFields": []
+      },
+      {
+        "id": "e1f2a3b4-c5d6-7890-efab-901234567890",
+        "bankName": "Capital One",
+        "phoneForOtp": "+18005551234",
+        "accountNumber": "789012345678",
+        "netBankingUsername": "michael.j.banking",
+        "netBankingPassword": "c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4:f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9",
+        "mobileBankingUsername": "mjohnson_capital",
+        "mobileBankingPassword": "8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3:e4f5a6b7c8d9e0f1a2b3c4d5e6f7",
+        "atmPin": "2817161514131211100f1e2d3c4b5a69:788776655443322110f1e2d3c4b5a69",
+        "customFields": [
+          {
+            "label": "Credit Limit",
+            "value": "25000:USD:abcdef1234567890abcdef1234567890"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f2a3b4c5-d6e7-8901-fabc-012345678901",
+    "username": "emily_davis",
+    "masterPassword": "MyPassword!2024",
+    "banks": [
+      {
+        "id": "a3b4c5d6-e7f8-9012-abcd-123456789012",
+        "bankName": "PNC Bank",
+        "phoneForOtp": "+14125551234",
+        "accountNumber": "890123456789",
+        "netBankingUsername": "emily.davis@email.com",
+        "netBankingPassword": "d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5:a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0",
+        "mobileBankingUsername": "edavis_user",
+        "mobileBankingPassword": "9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4:f5a6b7c8d9e0f1a2b3c4d5e6f7a8",
+        "atmPin": "17161514131211100f1e2d3c4b5a6978:8776655443322110f1e2d3c4b5a6978",
+        "customFields": []
+      },
+      {
+        "id": "b4c5d6e7-f8a9-0123-bcde-234567890123",
+        "bankName": "TD Bank",
+        "phoneForOtp": "+15125551234",
+        "accountNumber": "901234567890",
+        "netBankingUsername": "emily.d.banking",
+        "netBankingPassword": "e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6:b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1",
+        "mobileBankingUsername": "edavis_td",
+        "mobileBankingPassword": "0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5:a6b7c8d9e0f1a2b3c4d5e6f7a8b9",
+        "atmPin": "161514131211100f1e2d3c4b5a69788:776655443322110f1e2d3c4b5a69788",
+        "customFields": [
+          {
+            "label": "Account Manager",
+            "value": "John Smith:extension-1234:abcdef1234567890abcdef"
+          }
+        ]
+      },
+      {
+        "id": "c5d6e7f8-a9b0-1234-cdef-345678901234",
+        "bankName": "HSBC Bank",
+        "phoneForOtp": "+14125555678",
+        "accountNumber": "012345678901",
+        "netBankingUsername": "emily.davis@hsbc.com",
+        "netBankingPassword": "f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7:c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2",
+        "mobileBankingUsername": "edavis_hsbc",
+        "mobileBankingPassword": "1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6:b7c8d9e0f1a2b3c4d5e6f7a8b9c0",
+        "atmPin": "1514131211100f1e2d3c4b5a697887:76655443322110f1e2d3c4b5a697887",
+        "customFields": []
+      }
+    ]
+  },
+  {
+    "id": "d6e7f8a9-b0c1-2345-defa-456789012345",
+    "username": "david_brown",
+    "masterPassword": "SecurePass123!@",
+    "banks": [
+      {
+        "id": "e7f8a9b0-c1d2-3456-efab-567890123456",
+        "bankName": "American Express",
+        "phoneForOtp": "+16125556789",
+        "accountNumber": "123456789012",
+        "netBankingUsername": "david.brown@email.com",
+        "netBankingPassword": "a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8:d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3",
+        "mobileBankingUsername": "dbrown_user",
+        "mobileBankingPassword": "2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7:c8d9e0f1a2b3c4d5e6f7a8b9c0d1",
+        "atmPin": "14131211100f1e2d3c4b5a69788776:655443322110f1e2d3c4b5a69788776",
+        "customFields": [
+          {
+            "label": "Membership Rewards",
+            "value": "12345678:points:abcdef1234567890abcdef123456"
+          },
+          {
+            "label": "Card Type",
+            "value": "Platinum:abcdef1234567890abcdef1234567890"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f8a9b0c1-d2e3-4567-fabc-678901234567",
+    "username": "lisa_anderson",
+    "masterPassword": "Pass2024!Secure",
+    "banks": [
+      {
+        "id": "a9b0c1d2-e3f4-5678-abcd-789012345678",
+        "bankName": "Morgan Stanley",
+        "phoneForOtp": "+17125551234",
+        "accountNumber": "234567890123",
+        "netBankingUsername": "lisa.anderson@email.com",
+        "netBankingPassword": "b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9:e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4",
+        "mobileBankingUsername": "landerson_user",
+        "mobileBankingPassword": "3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8:d9e0f1a2b3c4d5e6f7a8b9c0d1e2",
+        "atmPin": "131211100f1e2d3c4b5a6978877665:5443322110f1e2d3c4b5a6978877665",
+        "customFields": []
+      },
+      {
+        "id": "b0c1d2e3-f4a5-6789-bcde-890123456789",
+        "bankName": "Charles Schwab",
+        "phoneForOtp": "+18005555678",
+        "accountNumber": "345678901234",
+        "netBankingUsername": "lisa.a.banking",
+        "netBankingPassword": "c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0:f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5",
+        "mobileBankingUsername": "landerson_schwab",
+        "mobileBankingPassword": "4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9:e0f1a2b3c4d5e6f7a8b9c0d1e2f3",
+        "atmPin": "1211100f1e2d3c4b5a6978877665544:43322110f1e2d3c4b5a6978877665544",
+        "customFields": [
+          {
+            "label": "Investment Portfolio",
+            "value": "Portfolio-ABC123:abcdef1234567890abcdef123456"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a9b0c1d2-e3f4-5678-abcd-901234567890",
+    "username": "james_wilson",
+    "masterPassword": "MySecure!Pass24",
+    "banks": [
+      {
+        "id": "c1d2e3f4-a5b6-7890-cdef-012345678901",
+        "bankName": "Barclays",
+        "phoneForOtp": "+442071234567",
+        "accountNumber": "456789012345",
+        "netBankingUsername": "james.wilson@email.com",
+        "netBankingPassword": "d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1:a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6",
+        "mobileBankingUsername": "jwilson_user",
+        "mobileBankingPassword": "5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0:f1a2b3c4d5e6f7a8b9c0d1e2f3a4",
+        "atmPin": "11100f1e2d3c4b5a697887766554433:322110f1e2d3c4b5a697887766554433",
+        "customFields": []
+      },
+      {
+        "id": "d2e3f4a5-b6c7-8901-defa-123456789012",
+        "bankName": "Deutsche Bank",
+        "phoneForOtp": "+493012345678",
+        "accountNumber": "567890123456",
+        "netBankingUsername": "james.w.banking",
+        "netBankingPassword": "e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2:b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7",
+        "mobileBankingUsername": "jwilson_deutsche",
+        "mobileBankingPassword": "6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1:a2b3c4d5e6f7a8b9c0d1e2f3a4b5",
+        "atmPin": "100f1e2d3c4b5a69788776655443322:2110f1e2d3c4b5a69788776655443322",
+        "customFields": [
+          {
+            "label": "IBAN",
+            "value": "DE89370400440532013000:abcdef1234567890abcdef"
+          },
+          {
+            "label": "BIC Code",
+            "value": "COBADEFFXXX:1234567890abcdef1234567890abcdef"
+          }
+        ]
+      },
+      {
+        "id": "e3f4a5b6-c7d8-9012-efab-234567890123",
+        "bankName": "Credit Suisse",
+        "phoneForOtp": "+41445001111",
+        "accountNumber": "678901234567",
+        "netBankingUsername": "james.wilson@cs.com",
+        "netBankingPassword": "f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3:c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8",
+        "mobileBankingUsername": "jwilson_cs",
+        "mobileBankingPassword": "7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2:b3c4d5e6f7a8b9c0d1e2f3a4b5c6",
+        "atmPin": "00f1e2d3c4b5a6978877665544332211:10f1e2d3c4b5a6978877665544332211",
+        "customFields": []
+      },
+      {
+        "id": "f4a5b6c7-d8e9-0123-fabc-345678901234",
+        "bankName": "UBS",
+        "phoneForOtp": "+41442341111",
+        "accountNumber": "789012345678",
+        "netBankingUsername": "james.wilson@ubs.com",
+        "netBankingPassword": "a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4:d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9",
+        "mobileBankingUsername": "jwilson_ubs",
+        "mobileBankingPassword": "8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3:c4d5e6f7a8b9c0d1e2f3a4b5c6d7",
+        "atmPin": "0f1e2d3c4b5a69788776655443322110:f1e2d3c4b5a69788776655443322110",
+        "customFields": [
+          {
+            "label": "Wealth Management",
+            "value": "WM-98765:abcdef1234567890abcdef1234567890"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "b0c1d2e3-f4a5-6789-bcde-456789012345",
+    "username": "maria_garcia",
+    "masterPassword": "Secure!Pass2024",
+    "banks": [
+      {
+        "id": "a5b6c7d8-e9f0-1234-abcd-567890123456",
+        "bankName": "Santander Bank",
+        "phoneForOtp": "+16125551234",
+        "accountNumber": "890123456789",
+        "netBankingUsername": "maria.garcia@email.com",
+        "netBankingPassword": "b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5:e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0",
+        "mobileBankingUsername": "mgarcia_user",
+        "mobileBankingPassword": "9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4:d5e6f7a8b9c0d1e2f3a4b5c6d7e8",
+        "atmPin": "f1e2d3c4b5a69788776655443322110f:e2d3c4b5a69788776655443322110f",
+        "customFields": []
+      },
+      {
+        "id": "b6c7d8e9-f0a1-2345-bcde-678901234567",
+        "bankName": "BBVA",
+        "phoneForOtp": "+34600123456",
+        "accountNumber": "901234567890",
+        "netBankingUsername": "maria.g.banking",
+        "netBankingPassword": "c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6:f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1",
+        "mobileBankingUsername": "mgarcia_bbva",
+        "mobileBankingPassword": "0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5:e6f7a8b9c0d1e2f3a4b5c6d7e8f9",
+        "atmPin": "e2d3c4b5a69788776655443322110fe2:d3c4b5a69788776655443322110fe2",
+        "customFields": [
+          {
+            "label": "Account in Spain",
+            "value": "ES9121000418450200051332:abcdef1234567890"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "c1d2e3f4-a5b6-7890-cdef-789012345678",
+    "username": "alex_thompson",
+    "masterPassword": "P@ssw0rd!Secure",
+    "banks": [
+      {
+        "id": "c7d8e9f0-a1b2-3456-cdef-890123456789",
+        "bankName": "Ally Bank",
+        "phoneForOtp": "+18005551234",
+        "accountNumber": "012345678901",
+        "netBankingUsername": "alex.thompson@email.com",
+        "netBankingPassword": "d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7:a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2",
+        "mobileBankingUsername": "athompson_user",
+        "mobileBankingPassword": "1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6:f7a8b9c0d1e2f3a4b5c6d7e8f9a0",
+        "atmPin": "d3c4b5a69788776655443322110fe2d3:c4b5a69788776655443322110fe2d3",
+        "customFields": []
+      },
+      {
+        "id": "d8e9f0a1-b2c3-4567-defa-901234567890",
+        "bankName": "Discover Bank",
+        "phoneForOtp": "+18005556789",
+        "accountNumber": "123456789012",
+        "netBankingUsername": "alex.t.banking",
+        "netBankingPassword": "e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8:b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3",
+        "mobileBankingUsername": "athompson_discover",
+        "mobileBankingPassword": "2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7:a8b9c0d1e2f3a4b5c6d7e8f9a0b1",
+        "atmPin": "c4b5a69788776655443322110fe2d3c4:b5a69788776655443322110fe2d3c4",
+        "customFields": [
+          {
+            "label": "Cashback Percentage",
+            "value": "5%:annually:abcdef1234567890abcdef123456"
+          }
+        ]
+      },
+      {
+        "id": "e9f0a1b2-c3d4-5678-efab-012345678901",
+        "bankName": "Marcus by Goldman Sachs",
+        "phoneForOtp": "+18005551234",
+        "accountNumber": "234567890123",
+        "netBankingUsername": "alex.thompson@marcus.com",
+        "netBankingPassword": "f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9:c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4",
+        "mobileBankingUsername": "athompson_marcus",
+        "mobileBankingPassword": "3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8:b9c0d1e2f3a4b5c6d7e8f9a0b1c2",
+        "atmPin": "b5a69788776655443322110fe2d3c4b5:a69788776655443322110fe2d3c4b5",
+        "customFields": []
+      }
+    ]
+  },
+  {
+    "id": "d2e3f4a5-b6c7-8901-defa-123456789012",
+    "username": "olivia_martinez",
+    "masterPassword": "Secure2024!Pass",
+    "banks": [
+      {
+        "id": "f0a1b2c3-d4e5-6789-fabc-234567890123",
+        "bankName": "First Republic Bank",
+        "phoneForOtp": "+14155551234",
+        "accountNumber": "345678901234",
+        "netBankingUsername": "olivia.martinez@email.com",
+        "netBankingPassword": "a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0:d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5",
+        "mobileBankingUsername": "omartinez_user",
+        "mobileBankingPassword": "4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9:c0d1e2f3a4b5c6d7e8f9a0b1c2d3",
+        "atmPin": "a69788776655443322110fe2d3c4b5a6:9788776655443322110fe2d3c4b5a6",
+        "customFields": [
+          {
+            "label": "Private Banking",
+            "value": "PB-54321:abcdef1234567890abcdef1234567890"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "e3f4a5b6-c7d8-9012-efab-345678901234",
+    "username": "william_taylor",
+    "masterPassword": "MyPass!Secure24",
+    "banks": [
+      {
+        "id": "a1b2c3d4-e5f6-7890-abcd-456789012345",
+        "bankName": "Merrill Lynch",
+        "phoneForOtp": "+18005551234",
+        "accountNumber": "456789012345",
+        "netBankingUsername": "william.taylor@email.com",
+        "netBankingPassword": "b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1:e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6",
+        "mobileBankingUsername": "wtaylor_user",
+        "mobileBankingPassword": "5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0:d1e2f3a4b5c6d7e8f9a0b1c2d3e4",
+        "atmPin": "9788776655443322110fe2d3c4b5a697:88776655443322110fe2d3c4b5a697",
+        "customFields": []
+      },
+      {
+        "id": "b2c3d4e5-f6a7-8901-bcde-567890123456",
+        "bankName": "Fidelity",
+        "phoneForOtp": "+18005551234",
+        "accountNumber": "567890123456",
+        "netBankingUsername": "william.t.banking",
+        "netBankingPassword": "c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2:f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7",
+        "mobileBankingUsername": "wtaylor_fidelity",
+        "mobileBankingPassword": "6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1:e2f3a4b5c6d7e8f9a0b1c2d3e4f5",
+        "atmPin": "88776655443322110fe2d3c4b5a6978:8776655443322110fe2d3c4b5a6978",
+        "customFields": [
+          {
+            "label": "401k Account",
+            "value": "401k-98765:abcdef1234567890abcdef123456"
+          },
+          {
+            "label": "IRA Account",
+            "value": "IRA-54321:1234567890abcdef1234567890abcdef"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "f4a5b6c7-d8e9-0123-fabc-567890123456",
+    "username": "sophia_lee",
+    "masterPassword": "Pass2024!Secure",
+    "banks": [
+      {
+        "id": "c3d4e5f6-a7b8-9012-cdef-678901234567",
+        "bankName": "Bank of New York Mellon",
+        "phoneForOtp": "+12125551234",
+        "accountNumber": "678901234567",
+        "netBankingUsername": "sophia.lee@email.com",
+        "netBankingPassword": "d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3:a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8",
+        "mobileBankingUsername": "slee_user",
+        "mobileBankingPassword": "7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2:f3a4b5c6d7e8f9a0b1c2d3e4f5a6",
+        "atmPin": "8776655443322110fe2d3c4b5a69788:776655443322110fe2d3c4b5a69788",
+        "customFields": []
+      },
+      {
+        "id": "d4e5f6a7-b8c9-0123-defa-789012345678",
+        "bankName": "State Street Bank",
+        "phoneForOtp": "+16175551234",
+        "accountNumber": "789012345678",
+        "netBankingUsername": "sophia.l.banking",
+        "netBankingPassword": "e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4:b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9",
+        "mobileBankingUsername": "slee_statestreet",
+        "mobileBankingPassword": "8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3:a4b5c6d7e8f9a0b1c2d3e4f5a6b7",
+        "atmPin": "776655443322110fe2d3c4b5a697887:76655443322110fe2d3c4b5a697887",
+        "customFields": [
+          {
+            "label": "Custody Account",
+            "value": "CA-12345:abcdef1234567890abcdef1234567890"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a5b6c7d8-e9f0-1234-abcd-890123456789",
+    "username": "ryan_nguyen",
+    "masterPassword": "Secure!Pass2024",
+    "banks": [
+      {
+        "id": "e5f6a7b8-c9d0-1234-efab-901234567890",
+        "bankName": "Silicon Valley Bank",
+        "phoneForOtp": "+14105551234",
+        "accountNumber": "890123456789",
+        "netBankingUsername": "ryan.nguyen@email.com",
+        "netBankingPassword": "f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5:c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0",
+        "mobileBankingUsername": "rnguyen_user",
+        "mobileBankingPassword": "9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4:b5c6d7e8f9a0b1c2d3e4f5a6b7c8",
+        "atmPin": "76655443322110fe2d3c4b5a6978877:6655443322110fe2d3c4b5a6978877",
+        "customFields": [
+          {
+            "label": "Business Account",
+            "value": "BA-98765:abcdef1234567890abcdef123456"
+          },
+          {
+            "label": "Tax ID",
+            "value": "EIN-12-3456789:abcdef1234567890abcdef"
+          }
+        ]
+      },
+      {
+        "id": "f6a7b8c9-d0e1-2345-fabc-012345678901",
+        "bankName": "Comerica Bank",
+        "phoneForOtp": "+18005551234",
+        "accountNumber": "901234567890",
+        "netBankingUsername": "ryan.n.banking",
+        "netBankingPassword": "a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6:d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1",
+        "mobileBankingUsername": "rnguyen_comerica",
+        "mobileBankingPassword": "0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5:c6d7e8f9a0b1c2d3e4f5a6b7c8d9",
+        "atmPin": "6655443322110fe2d3c4b5a69788776:655443322110fe2d3c4b5a69788776",
+        "customFields": []
+      }
+    ]
+  },
+  {
+    "id": "b6c7d8e9-f0a1-2345-bcde-012345678901",
+    "username": "chloe_kim",
+    "masterPassword": "MyPass2024!Sec",
+    "banks": [
+      {
+        "id": "a7b8c9d0-e1f2-3456-abcd-123456789012",
+        "bankName": "KeyBank",
+        "phoneForOtp": "+16165551234",
+        "accountNumber": "012345678901",
+        "netBankingUsername": "chloe.kim@email.com",
+        "netBankingPassword": "b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7:e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2",
+        "mobileBankingUsername": "ckim_user",
+        "mobileBankingPassword": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6:d7e8f9a0b1c2d3e4f5a6b7c8d9e0",
+        "atmPin": "655443322110fe2d3c4b5a697887766:55443322110fe2d3c4b5a697887766",
+        "customFields": []
+      },
+      {
+        "id": "b8c9d0e1-f2a3-4567-bcde-234567890123",
+        "bankName": "Fifth Third Bank",
+        "phoneForOtp": "+18005551234",
+        "accountNumber": "123456789012",
+        "netBankingUsername": "chloe.k.banking",
+        "netBankingPassword": "c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8:f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3",
+        "mobileBankingUsername": "ckim_fifththird",
+        "mobileBankingPassword": "2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7:e8f9a0b1c2d3e4f5a6b7c8d9e0f1",
+        "atmPin": "55443322110fe2d3c4b5a6978877665:5443322110fe2d3c4b5a6978877665",
+        "customFields": [
+          {
+            "label": "Student Account",
+            "value": "Student-12345:abcdef1234567890abcdef123456"
+          }
+        ]
+      },
+      {
+        "id": "c9d0e1f2-a3b4-5678-cdef-345678901234",
+        "bankName": "Huntington Bank",
+        "phoneForOtp": "+18005555678",
+        "accountNumber": "234567890123",
+        "netBankingUsername": "chloe.kim@huntington.com",
+        "netBankingPassword": "d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9:a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4",
+        "mobileBankingUsername": "ckim_huntington",
+        "mobileBankingPassword": "3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8:f9a0b1c2d3e4f5a6b7c8d9e0f1a2",
+        "atmPin": "5443322110fe2d3c4b5a69788776654:43322110fe2d3c4b5a69788776654",
+        "customFields": []
+      }
+    ]
+  }
+]

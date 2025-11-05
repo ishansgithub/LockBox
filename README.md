@@ -20,6 +20,10 @@ Lockbox is a comprehensive personal banking credential management system that al
 - **Delete Banks**: Remove bank accounts with confirmation dialogs
 - **View Bank Details**: Securely view decrypted bank information with OTP verification
 - **Custom Fields**: Add custom fields for additional bank-specific information (SWIFT codes, routing numbers, etc.)
+- **Search & Filter**: Real-time search by bank name or account number
+- **Sort Banks**: Sort banks by name (A-Z, Z-A) or account number (ascending/descending)
+- **Bank Count Badge**: View total number of banks in the header
+- **CSV Export**: Export bank list to CSV format with proper formatting
 
 ### User Features
 - **User Registration**: Create new user accounts with unique usernames
@@ -32,6 +36,7 @@ Lockbox is a comprehensive personal banking credential management system that al
 - **Modern UI**: Built with ShadCN UI components for a polished, professional look
 - **Toast Notifications**: User-friendly feedback for all actions
 - **Loading States**: Visual feedback during data operations
+- **Copy to Clipboard**: One-click copy for passwords and usernames in bank details view
 
 ## 🛠️ Tech Stack
 
@@ -200,6 +205,28 @@ Lockbox-main/
 2. Select "Change Password"
 3. Enter current password and new password
 4. Confirm the new password
+
+### Searching and Filtering Banks
+1. Use the search box above the bank list
+2. Type bank name or account number to filter
+3. Results update in real-time as you type
+4. Click the X button to clear the search
+
+### Sorting Banks
+1. Use the "Sort by" dropdown above the bank list
+2. Choose from:
+   - Name (A-Z) - Alphabetical ascending
+   - Name (Z-A) - Alphabetical descending
+   - Account (Asc) - Account number ascending
+   - Account (Desc) - Account number descending
+3. Sorting works in combination with search filters
+
+### Exporting Bank List
+1. Click "Export CSV" button above the bank list
+2. The filtered and sorted bank list will be exported
+3. File downloads as `lockbox-banks-YYYY-MM-DD.csv`
+4. Includes bank name and account number
+5. Can be opened in Excel, Google Sheets, or any CSV viewer
 
 ## 🛠️ Development
 

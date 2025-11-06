@@ -20,7 +20,23 @@ export async function connectToDatabase(): Promise<Db> {
   }
 
   try {
-    client = new MongoClient(MONGODB_URI);
+    // Detect if using Atlas (mongodb+srv) or standard connection
+    const isAtlas = MONGODB_URI.startsWith('mongodb+srv://');
+    
+    // Configure connection options based on connection type
+    const options: any = {
+      retryWrites: true,
+      w: 'majority',
+    };
+
+    // Only add TLS options for Atlas connections
+    // For standard mongodb:// connections, TLS is usually handled by the connection string
+    if (isAtlas) {
+      options.tls = true;
+      options.tlsAllowInvalidCertificates = false;
+    }
+
+    client = new MongoClient(MONGODB_URI, options);
     await client.connect();
     db = client.db(MONGODB_DB_NAME);
     console.log('Connected to MongoDB');

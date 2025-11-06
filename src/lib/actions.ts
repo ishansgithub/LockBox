@@ -1,31 +1,18 @@
 
 'use server';
 
-import fs from 'fs/promises';
-import path from 'path';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 import { Bank, BankFormValues, BankListItem, User, ChangePasswordFormValues } from './types';
 import { encrypt, decrypt } from './encryption';
 import { randomUUID } from 'crypto';
+import { getUsersCollection } from './db';
 
-const dbPath = path.join(process.cwd(), 'src', 'data', 'users.json');
-
-async function readDb(): Promise<User[]> {
-  try {
-    const data = await fs.readFile(dbPath, 'utf-8');
-    return JSON.parse(data);
-  } catch (error: any) {
-    if (error.code === 'ENOENT') {
-      await writeDb([]); // Create the file if it doesn't exist
-      return [];
-    }
-    throw error;
-  }
-}
-
-async function writeDb(data: User[]): Promise<void> {
-  await fs.writeFile(dbPath, JSON.stringify(data, null, 2), 'utf-8');
+// Helper function to convert MongoDB document to plain object
+// Removes _id field and converts to plain JavaScript object
+function toPlainObject<T>(doc: T & { _id?: any }): T {
+  const { _id, ...rest } = doc as any;
+  return JSON.parse(JSON.stringify(rest)) as T;
 }
 
 const customFieldSchema = z.object({
@@ -47,12 +34,16 @@ const bankFormSchema = z.object({
 
 
 export async function getBanksForUser(userId: string): Promise<BankListItem[]> {
-  const users = await readDb();
-  const user = users.find((u) => u.id === userId);
+  const usersCollection = await getUsersCollection();
+  const user = await usersCollection.findOne({ id: userId });
   if (!user) {
     return [];
   }
-  return user.banks.map(({ id, bankName, accountNumber }) => ({ id, bankName, accountNumber }));
+  return user.banks.map(({ id, bankName, accountNumber }) => ({ 
+    id, 
+    bankName: decrypt(bankName), 
+    accountNumber: decrypt(accountNumber) 
+  }));
 }
 
 
@@ -64,30 +55,32 @@ export async function addBank(userId: string, values: BankFormValues) {
   }
   const data = validatedFields.data;
 
-  const users = await readDb();
-  const userIndex = users.findIndex((u) => u.id === userId);
-  if (userIndex === -1) {
+  const usersCollection = await getUsersCollection();
+  const user = await usersCollection.findOne({ id: userId });
+  if (!user) {
     return { error: 'User not found.' };
   }
 
   const newBank: Bank = {
     id: randomUUID(),
-    bankName: data.bankName,
-    phoneForOtp: data.phoneForOtp,
-    accountNumber: data.accountNumber,
-    netBankingUsername: data.netBankingUsername,
+    bankName: encrypt(data.bankName),
+    phoneForOtp: encrypt(data.phoneForOtp),
+    accountNumber: encrypt(data.accountNumber),
+    netBankingUsername: encrypt(data.netBankingUsername),
     netBankingPassword: data.netBankingPassword ? encrypt(data.netBankingPassword) : undefined,
-    mobileBankingUsername: data.mobileBankingUsername,
+    mobileBankingUsername: encrypt(data.mobileBankingUsername),
     mobileBankingPassword: data.mobileBankingPassword ? encrypt(data.mobileBankingPassword) : undefined,
     atmPin: data.atmPin ? encrypt(data.atmPin) : undefined,
     customFields: data.customFields?.map(field => ({
-      ...field,
+      label: encrypt(field.label),
       value: encrypt(field.value),
     })),
   };
 
-  users[userIndex].banks.push(newBank);
-  await writeDb(users);
+  await usersCollection.updateOne(
+    { id: userId },
+    { $push: { banks: newBank } }
+  );
   revalidatePath('/');
   return { success: 'Bank added successfully.' };
 }
@@ -99,38 +92,38 @@ export async function updateBank(userId: string, bankId: string, values: BankFor
     }
     const data = validatedFields.data;
 
-    const users = await readDb();
-    const userIndex = users.findIndex((u) => u.id === userId);
+    const usersCollection = await getUsersCollection();
+    const user = await usersCollection.findOne({ id: userId });
 
-    if (userIndex === -1) {
+    if (!user) {
         return { error: 'User not found.' };
     }
 
-    const bankIndex = users[userIndex].banks.findIndex((b) => b.id === bankId);
+    const bankIndex = user.banks.findIndex((b) => b.id === bankId);
 
     if (bankIndex === -1) {
         return { error: 'Bank not found.' };
     }
 
-    const existingBank = users[userIndex].banks[bankIndex];
+    const existingBank = user.banks[bankIndex];
 
     const updatedBank: Bank = {
         ...existingBank,
-        bankName: data.bankName,
-        phoneForOtp: data.phoneForOtp,
-        accountNumber: data.accountNumber,
-        netBankingUsername: data.netBankingUsername,
-        mobileBankingUsername: data.mobileBankingUsername,
+        bankName: encrypt(data.bankName),
+        phoneForOtp: encrypt(data.phoneForOtp),
+        accountNumber: encrypt(data.accountNumber),
+        netBankingUsername: encrypt(data.netBankingUsername),
+        mobileBankingUsername: encrypt(data.mobileBankingUsername),
     };
     
-    // Only update password if a new one is provided
-    if (data.netBankingPassword) {
+    // Only update password if a new one is provided (non-empty string)
+    if (data.netBankingPassword && data.netBankingPassword.trim() !== '') {
         updatedBank.netBankingPassword = encrypt(data.netBankingPassword);
     }
-    if (data.mobileBankingPassword) {
+    if (data.mobileBankingPassword && data.mobileBankingPassword.trim() !== '') {
         updatedBank.mobileBankingPassword = encrypt(data.mobileBankingPassword);
     }
-    if (data.atmPin) {
+    if (data.atmPin && data.atmPin.trim() !== '') {
         updatedBank.atmPin = encrypt(data.atmPin);
     }
 
@@ -138,34 +131,41 @@ export async function updateBank(userId: string, bankId: string, values: BankFor
     if (data.customFields) {
         updatedBank.customFields = data.customFields.map(field => {
             return {
-                ...field,
+                label: encrypt(field.label),
                 value: encrypt(field.value),
             };
         });
     }
 
-    users[userIndex].banks[bankIndex] = updatedBank;
-    await writeDb(users);
+    // Update the bank in the array
+    user.banks[bankIndex] = updatedBank;
+    await usersCollection.updateOne(
+        { id: userId },
+        { $set: { banks: user.banks } }
+    );
     revalidatePath('/');
     return { success: 'Bank updated successfully.' };
 }
 
 export async function deleteBank(userId: string, bankId: string) {
-  const users = await readDb();
-  const userIndex = users.findIndex((u) => u.id === userId);
+  const usersCollection = await getUsersCollection();
+  const user = await usersCollection.findOne({ id: userId });
 
-  if (userIndex === -1) {
+  if (!user) {
       return { error: 'User not found.' };
   }
 
-  const initialBankCount = users[userIndex].banks.length;
-  users[userIndex].banks = users[userIndex].banks.filter((b) => b.id !== bankId);
+  const initialBankCount = user.banks.length;
+  const updatedBanks = user.banks.filter((b) => b.id !== bankId);
 
-  if (users[userIndex].banks.length === initialBankCount) {
+  if (updatedBanks.length === initialBankCount) {
       return { error: 'Bank not found.' };
   }
 
-  await writeDb(users);
+  await usersCollection.updateOne(
+      { id: userId },
+      { $set: { banks: updatedBanks } }
+  );
   revalidatePath('/');
   return { success: 'Bank deleted successfully.' };
 }
@@ -174,22 +174,39 @@ export async function verifyMasterPassword(username: string, password: string) {
   if (!username || !password) {
     return { error: 'Username and password are required.' };
   }
-  const users = await readDb();
-  const user = users.find((u) => u.username.toLowerCase() === username.toLowerCase());
+  const usersCollection = await getUsersCollection();
+  const user = await usersCollection.findOne({ 
+    username: { $regex: new RegExp(`^${username}$`, 'i') } 
+  });
 
-  // In a real app, use a secure password hashing library like bcrypt
-  if (user && user.masterPassword === password) {
-    // Return a copy of the user object without the sensitive data
-    const { masterPassword, ...userToReturn } = user;
-    return { success: 'Login successful.', user: userToReturn };
+  // Decrypt and verify the master password
+  if (user && user.masterPassword) {
+    try {
+      const decryptedPassword = decrypt(user.masterPassword);
+      if (decryptedPassword === password) {
+        // Convert MongoDB document to plain object and remove sensitive data
+        const plainUser = toPlainObject(user);
+        const { masterPassword, ...userToReturn } = plainUser;
+        return { success: 'Login successful.', user: userToReturn };
+      }
+    } catch (error) {
+      // If decryption fails, try plain text comparison for backward compatibility
+      // (for users created before encryption was added)
+      if (user.masterPassword === password) {
+        // Convert to plain object and remove sensitive data
+        const plainUser = toPlainObject(user);
+        const { masterPassword, ...userToReturn } = plainUser;
+        return { success: 'Login successful.', user: userToReturn };
+      }
+    }
   }
 
   return { error: 'Invalid username or password.' };
 }
 
 export async function decryptBank(userId: string, bankId: string) {
-  const users = await readDb();
-  const user = users.find((u) => u.id === userId);
+  const usersCollection = await getUsersCollection();
+  const user = await usersCollection.findOne({ id: userId });
   if (!user) {
     return { error: 'User not found.' };
   }
@@ -201,11 +218,16 @@ export async function decryptBank(userId: string, bankId: string) {
   
   const decryptedBank: Bank = {
     ...bank,
+    bankName: decrypt(bank.bankName),
+    phoneForOtp: decrypt(bank.phoneForOtp),
+    accountNumber: decrypt(bank.accountNumber),
+    netBankingUsername: decrypt(bank.netBankingUsername),
     netBankingPassword: bank.netBankingPassword ? decrypt(bank.netBankingPassword) : 'N/A',
+    mobileBankingUsername: decrypt(bank.mobileBankingUsername),
     mobileBankingPassword: bank.mobileBankingPassword ? decrypt(bank.mobileBankingPassword) : 'N/A',
     atmPin: bank.atmPin ? decrypt(bank.atmPin) : 'N/A',
     customFields: bank.customFields?.map(field => ({
-      ...field,
+      label: decrypt(field.label),
       value: field.value ? decrypt(field.value) : 'N/A',
     })),
   };
@@ -225,9 +247,11 @@ export async function createUser(values: unknown) {
     }
     const { username, password } = validatedFields.data;
 
-    const users = await readDb();
+    const usersCollection = await getUsersCollection();
 
-    const existingUser = users.find((u) => u.username.toLowerCase() === username.toLowerCase());
+    const existingUser = await usersCollection.findOne({ 
+        username: { $regex: new RegExp(`^${username}$`, 'i') } 
+    });
     if (existingUser) {
         return { error: 'Username already taken.' };
     }
@@ -235,14 +259,15 @@ export async function createUser(values: unknown) {
     const newUser: User = {
         id: randomUUID(),
         username: username,
-        masterPassword: password, // In a real app, this should be securely hashed
+        masterPassword: encrypt(password), // Encrypt the master password
         banks: [],
     };
 
-    users.push(newUser);
-    await writeDb(users);
+    await usersCollection.insertOne(newUser);
 
-    const { masterPassword, ...userToReturn } = newUser;
+    // Convert to plain object and remove sensitive data
+    const plainUser = toPlainObject(newUser);
+    const { masterPassword, ...userToReturn } = plainUser;
 
     return { success: `User '${username}' created successfully! You can now log in.`, user: userToReturn };
 }
@@ -267,21 +292,35 @@ export async function changeMasterPassword(userId: string, values: ChangePasswor
   }
 
   const { currentPassword, newPassword } = validatedFields.data;
-  const users = await readDb();
-  const userIndex = users.findIndex((u) => u.id === userId);
+  const usersCollection = await getUsersCollection();
+  const user = await usersCollection.findOne({ id: userId });
 
-  if (userIndex === -1) {
+  if (!user) {
     return { error: 'User not found.' };
   }
 
-  const user = users[userIndex];
-  // In a real app, use a secure password hashing library like bcrypt
-  if (user.masterPassword !== currentPassword) {
+  // Decrypt and verify the current password
+  let isPasswordValid = false;
+  try {
+    if (user.masterPassword) {
+      const decryptedPassword = decrypt(user.masterPassword);
+      isPasswordValid = decryptedPassword === currentPassword;
+    }
+  } catch (error) {
+    // If decryption fails, try plain text comparison for backward compatibility
+    // (for users created before encryption was added)
+    isPasswordValid = user.masterPassword === currentPassword;
+  }
+
+  if (!isPasswordValid) {
     return { error: 'Incorrect current password.' };
   }
 
-  users[userIndex].masterPassword = newPassword;
-  await writeDb(users);
+  // Encrypt the new password before saving
+  await usersCollection.updateOne(
+      { id: userId },
+      { $set: { masterPassword: encrypt(newPassword) } }
+  );
 
   return { success: 'Master password updated successfully.' };
 }

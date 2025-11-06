@@ -57,8 +57,8 @@ Lockbox is a comprehensive personal banking credential management system that al
 - **Twilio** (optional) - SMS OTP delivery
 
 ### Data Storage
-- **JSON File Storage** - User data stored in `src/data/users.json`
-  - Note: For production, consider migrating to a proper database
+- **MongoDB** - User data stored in MongoDB database
+  - Connection string configured via `MONGODB_URI` environment variable
 
 ## 📋 Prerequisites
 
@@ -86,13 +86,24 @@ Lockbox is a comprehensive personal banking credential management system that al
    # Encryption key (must be exactly 32 characters)
    ENCRYPTION_KEY=your-super-secret-32-character-key
    
+   # MongoDB Connection String
+   # Get your connection string from MongoDB Atlas or your local MongoDB instance
+   # Format: mongodb://username:password@host:port/database
+   # Example: mongodb+srv://username:password@cluster.mongodb.net/
+   MONGODB_URI=your_mongodb_connection_string_here
+   
+   # MongoDB Database Name (optional, defaults to 'lockbox')
+   MONGODB_DB_NAME=lockbox
+   
    # Optional: Twilio credentials for SMS OTP
    TWILIO_ACCOUNT_SID=your_twilio_account_sid
    TWILIO_AUTH_TOKEN=your_twilio_auth_token
    TWILIO_PHONE_NUMBER=your_twilio_phone_number
    ```
-
-   **Important**: The `ENCRYPTION_KEY` must be exactly 32 characters long. Generate a strong, random key for production use.
+   
+   **Important**: 
+   - The `ENCRYPTION_KEY` must be exactly 32 characters long. Generate a strong, random key for production use.
+   - The `MONGODB_URI` is required. You can get a free MongoDB Atlas cluster at [mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas)
 
 4. **Run the development server**
    ```bash
@@ -129,13 +140,14 @@ Lockbox-main/
 │   │   ├── SignUpDialog.tsx
 │   │   ├── ThemeProvider.tsx
 │   │   └── ThemeToggle.tsx
-│   ├── data/                  # Data storage
-│   │   └── users.json        # User and bank data (encrypted)
+│   ├── data/                  # Data storage (legacy - migrated to MongoDB)
+│   │   └── users.json        # User and bank data (legacy JSON file)
 │   ├── hooks/                 # Custom React hooks
 │   │   ├── use-mobile.tsx
 │   │   └── use-toast.ts
 │   └── lib/                   # Core utilities
 │       ├── actions.ts         # Server actions
+│       ├── db.ts             # MongoDB connection utilities
 │       ├── encryption.ts     # Encryption utilities
 │       ├── otp.ts            # OTP generation and verification
 │       ├── types.ts          # TypeScript types
@@ -253,7 +265,7 @@ npm run lint
 
 ### Production Considerations
 
-1. **Database Migration**: The current implementation uses JSON file storage. For production, migrate to a proper database (PostgreSQL, MongoDB, etc.)
+1. **Database**: The application now uses MongoDB for data storage. Ensure your MongoDB instance is properly secured and backed up.
 
 2. **Password Hashing**: Master passwords are currently stored in plain text. Implement bcrypt or Argon2 for password hashing in production
 

@@ -4,12 +4,15 @@ import { User } from './types';
 let client: MongoClient | null = null;
 let db: Db | null = null;
 
-const MONGODB_URI = process.env.MONGODB_URI;
+// Don't read environment variables at module level - read them at runtime
 const MONGODB_DB_NAME = process.env.MONGODB_DB_NAME || 'lockbox';
 
 export async function connectToDatabase(): Promise<Db> {
+  // Read environment variable at runtime instead of module load time
+  const MONGODB_URI = process.env.MONGODB_URI;
+  
   if (!MONGODB_URI) {
-    throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
+    throw new Error('Please define the MONGODB_URI environment variable in your environment settings');
   }
 
   if (db && client) {
